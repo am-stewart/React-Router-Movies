@@ -11,22 +11,22 @@ export default function MovieList(props) {
   );
 }
 
-const { url } = useRouteMatch();
-
 function MovieDetails(props) {
   const { title, director, metascore } = props.movie;
+  const { url } = useRouteMatch();
 
   return (
-    <Link to={`${url}/${movie.id}`}>
     <div className="movie-card">
-      <h2>{title}</h2>
-      <div className="movie-director">
+      <Link to={`/movies/${props.movie.id}`}>
+        <h2>{title}</h2>
+        <div className="movie-director">
         Director: <em>{director}</em>
-      </div>
-      <div className="movie-metascore">
+        </div>
+        <div className="movie-metascore">
         Metascore: <strong>{metascore}</strong>
-      </div>
+        </div>
+      </Link>
     </div>
-    </Link>
+    
   );
 }
